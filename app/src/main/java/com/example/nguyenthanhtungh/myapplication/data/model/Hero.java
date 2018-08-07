@@ -3,15 +3,15 @@ package com.example.nguyenthanhtungh.myapplication.data.model;
 public class Hero {
     private int mImageId;
 
-    public Hero(int mImageId) {
-        this.mImageId = mImageId;
+    public Hero(int imageId) {
+        this.mImageId = imageId;
     }
 
-    public int getmImageId() {
+    public int getImageId() {
         return mImageId;
     }
 
-    public void setmImageId(int mImageId) {
-        this.mImageId = mImageId;
+    public void setImageId(int imageId) {
+        this.mImageId = imageId;
     }
 }

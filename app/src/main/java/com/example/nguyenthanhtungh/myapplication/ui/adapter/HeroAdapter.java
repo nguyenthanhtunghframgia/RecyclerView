@@ -1,6 +1,5 @@
 package com.example.nguyenthanhtungh.myapplication.ui.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,37 +13,40 @@ import com.example.nguyenthanhtungh.myapplication.data.model.Hero;
 import java.util.ArrayList;
 
 public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.HeroHolder> {
-    private ArrayList<Hero> heroArrayList;
+    private ArrayList<Hero> mListHeros;
 
     public HeroAdapter(ArrayList<Hero> heroArrayList) {
-        this.heroArrayList = heroArrayList;
+        this.mListHeros = heroArrayList;
     }
 
     @NonNull
     @Override
     public HeroHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.adapter_hero_items,viewGroup,false);
+                .inflate(R.layout.adapter_hero_items, viewGroup, false);
         return new HeroHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HeroHolder heroHolder, int i) {
-        Hero hero = heroArrayList.get(i);
-        heroHolder.imageHero.setImageResource(hero.getmImageId());
+        Hero hero = mListHeros.get(i);
+        heroHolder.mImageHero.setImageResource(hero.getImageId());
     }
 
     @Override
     public int getItemCount() {
-        return heroArrayList.size();
+        if (mListHeros == null) {
+            return 0;
+        }
+        return mListHeros.size();
     }
 
     public class HeroHolder extends RecyclerView.ViewHolder {
-        private ImageView imageHero;
+        private ImageView mImageHero;
 
         public HeroHolder(@NonNull View itemView) {
             super(itemView);
-            imageHero = (ImageView) itemView.findViewById(R.id.image_hero);
+            mImageHero = (ImageView) itemView.findViewById(R.id.image_hero);
         }
     }
 }
