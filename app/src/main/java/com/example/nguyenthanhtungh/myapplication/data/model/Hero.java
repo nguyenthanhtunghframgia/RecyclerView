@@ -4,7 +4,7 @@ public class Hero {
     private int mImageId;
 
     public Hero(int imageId) {
-        this.mImageId = imageId;
+        mImageId = imageId;
     }
 
     public int getImageId() {
@@ -12,6 +12,6 @@ public class Hero {
     }
 
     public void setImageId(int imageId) {
-        this.mImageId = imageId;
+        mImageId = imageId;
     }
 }

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.HeroHolder> {
     private ArrayList<Hero> mListHeros;
 
-    public HeroAdapter(ArrayList<Hero> heroArrayList) {
-        this.mListHeros = heroArrayList;
+    public HeroAdapter(ArrayList<Hero> listHeros) {
+        mListHeros = listHeros;
     }
 
     @NonNull
@@ -29,24 +29,24 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.HeroHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HeroHolder heroHolder, int i) {
-        Hero hero = mListHeros.get(i);
-        heroHolder.mImageHero.setImageResource(hero.getImageId());
+        heroHolder.bindData(mListHeros.get(i));
     }
 
     @Override
     public int getItemCount() {
-        if (mListHeros == null) {
-            return 0;
-        }
-        return mListHeros.size();
+        return mListHeros.size() != 0 ? mListHeros.size() : 0;
     }
 
     public class HeroHolder extends RecyclerView.ViewHolder {
         private ImageView mImageHero;
 
-        public HeroHolder(@NonNull View itemView) {
+        private HeroHolder(@NonNull View itemView) {
             super(itemView);
             mImageHero = (ImageView) itemView.findViewById(R.id.image_hero);
+        }
+
+        public void bindData(Hero hero) {
+            mImageHero.setImageResource(hero.getImageId());
         }
     }
 }
